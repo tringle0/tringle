@@ -1,11 +1,10 @@
-
-//boyer moores string searching algorithm
-
 #include <string>
 #include <iostream>
 
 using namespace std;
 
+// boyer moores string searching algorithm
+// 1/9/2025
 
 int searchstr(string &word, string &target, int pos) {
 	//not found
@@ -13,7 +12,7 @@ int searchstr(string &word, string &target, int pos) {
 		return -1;
 	}
 	
-	//mismatch
+	//compare
 	char badchar = -1; int badcharpos;
 	for (int k = target.length() - 1; k >= 0; k--) {
 		if (badchar == -1) {
@@ -24,6 +23,7 @@ int searchstr(string &word, string &target, int pos) {
 			}
 		}
 		else {
+			//mismatch
 			if (target.at(k) == badchar) {
 				return searchstr(word, target, pos + badcharpos - k);
 			}

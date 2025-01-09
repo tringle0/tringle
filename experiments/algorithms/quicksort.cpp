@@ -2,7 +2,8 @@
 #include <vector>
 using namespace std;
 
-//quicksort algorithm
+// quicksort algorithm
+// 1/8/2025
 
 void printvec(vector<int>& list) {
 	for (int k = 0; k < list.size(); k++) {
