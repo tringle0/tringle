@@ -7,9 +7,9 @@
 using namespace std;
 
 
-int searchstr(string word, string target, int pos) {
+int searchstr(string &word, string &target, int pos) {
 	//not found
-	if (pos + target.length() >= word.length()) {
+	if (pos + target.length() > word.length()) {
 		return -1;
 	}
 	
