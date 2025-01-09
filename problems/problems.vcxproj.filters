@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DMOJ\ac20p2.cpp">
+    <ClCompile Include="DMOJ\Appleby Contest %2720 P2 - Playful Playdoughs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
