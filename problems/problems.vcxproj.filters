@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DMOJ\CCC %2705 J4 - Cross Spiral.cpp">
+    <ClCompile Include="CCC %2709 J4 - Signage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
