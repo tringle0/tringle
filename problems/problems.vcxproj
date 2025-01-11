@@ -127,7 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="DMOJ\Appleby Contest %2720 P2 - Playful Playdoughs.cpp" />
+    <ClCompile Include="DMOJ\Yet Another Contest 9 P1 - Permutation Cutting.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
