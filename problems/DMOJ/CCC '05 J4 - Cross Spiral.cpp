@@ -44,37 +44,56 @@ public:
 
 	void traverse() {
 		vec2 pos = { cwidth ,0 };
+		vec2 lastpos;
 		for(int k = 0; k < steps; k++){
-			pos = walk(pos, directions.at(dir % 4), directions.at((dir + 1) % 4));
+			lastpos = pos;
+			pos = walk(pos, directions.at(dir % 4), directions.at((dir + 1) % 4),0);
+			if (lastpos.x == pos.x && lastpos.y == pos.y) {
+				break;
+			}
 		}
 		cout << pos.x + 1<< endl << pos.y + 1;
 	}
 
 private:
-	vec2 walk(vec2 pos, vec2 primary, vec2 secondary) {
+	bool inbounds(vec2 pos) {
+
+		if (pos.x > vec[0].size()-1) return false;
+		if (pos.x < 0)  return false;
+		if (pos.y > vec.size()-1)  return false;
+		if (pos.y < 0)  return false;
+		return true;
+	}
+
+	vec2 walk(vec2 pos, vec2 primary, vec2 secondary, int turns) {
 		//mark current tile
 		vec[pos.y][pos.x] = 1;
-
-		try {
-			//primary within bounds
+		vec2 nexttile = { pos.x + primary.x, pos.y + primary.y };
+		bool checkpbounds = inbounds(nexttile);
+		switch(checkpbounds) {
+		case true:
 			if (vec.at(pos.y + primary.y).at(pos.x + primary.x) == 0) {
 				pos.x += primary.x;
 				pos.y += primary.y;
+				break;
 			}
-			else {
-				throw 1;
-			}
-		}
-		catch (...) {
-			//secondary within bounds
-			if (vec.at(pos.y + secondary.y).at(pos.x + secondary.x) == 0) {
-				pos.x += secondary.x;
-				pos.y += secondary.y;
-			}
-			else {
-				//cannot walk, change direction
-				steps++;
+		case false:
+			nexttile = { pos.x + secondary.x, pos.y + secondary.y };
+			bool checksbounds = inbounds(nexttile);
+			switch (checksbounds) {
+			case true:
+				if (vec.at(pos.y + secondary.y).at(pos.x + secondary.x) == 0) {
+					pos.x += secondary.x;
+					pos.y += secondary.y;
+					break;
+				}
+			case false:
 				dir++;
+				//check if stuck
+				if (turns == 3) {
+					return pos;
+				}
+				return walk(pos, directions.at(dir % 4), directions.at((dir + 1) % 4), turns+1);
 			}
 		}
 		return pos;

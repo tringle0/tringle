@@ -127,7 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="DMOJ\Yet Another Contest 9 P1 - Permutation Cutting.cpp" />
+    <ClCompile Include="DMOJ\CCC %2705 J4 - Cross Spiral.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
