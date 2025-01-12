@@ -2,14 +2,8 @@
 #include <vector>
 using namespace std;
 
-/*
-
-quicksort algorithm
-1/8/2025
-- very fast sorting algorithm
-- average time complexity O(n log n)
-
-*/
+//quicksort algorithm
+//1-8-2025
 
 void printvec(vector<int>& list) {
 	for (int k = 0; k < list.size(); k++) {
