@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CCC %2709 J4 - Signage.cpp">
+    <ClCompile Include="DMOJ\CCC %2716 J3 - Hidden Palindrome.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
