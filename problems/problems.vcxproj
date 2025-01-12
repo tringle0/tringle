@@ -127,7 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="DMOJ\CCC %2716 J3 - Hidden Palindrome.cpp" />
+    <ClCompile Include="DMOJ\CCC %2713 J4 - Time on task.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
