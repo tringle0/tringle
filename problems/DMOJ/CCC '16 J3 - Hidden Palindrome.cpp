@@ -4,7 +4,8 @@
 using namespace std;
 
 //CCC '16 J3 - Hidden Palindrome
-//1-11-2024
+// https://dmoj.ca/problem/ccc16j3
+//1-11-2025
 
 int main() {
 	string word; cin >> word;

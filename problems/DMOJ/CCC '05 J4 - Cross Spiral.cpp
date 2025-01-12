@@ -4,6 +4,7 @@ using namespace std;
 
 //CCC '05 J4 - Cross Spiral
 //https://dmoj.ca/problem/ccc05j4
+//1-10-2025
 
 struct vec2 {
 	int x, y;

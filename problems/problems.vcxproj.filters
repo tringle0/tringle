@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DMOJ\CCC %2711 J4 - Boring Business.cpp">
+    <ClCompile Include="DMOJ\CCC %2721 J4 - Arranging Books.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

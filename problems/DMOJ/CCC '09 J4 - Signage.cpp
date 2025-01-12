@@ -4,6 +4,7 @@
 using namespace std;
 
 //CCC '09 J4 - Signage
+//https://dmoj.ca/problem/ccc09j4
 //1-11-2025
 
 void print(vector<string> currentline, int l, int linelength) {

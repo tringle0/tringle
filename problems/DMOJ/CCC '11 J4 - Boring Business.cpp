@@ -4,6 +4,10 @@
 #include <unordered_set>
 using namespace std;
 
+//CCC '11 J4 - Boring Business
+//https://dmoj.ca/problem/ccc11j4
+//1-12-2025
+
 string pos(int posx, int posy) {
 	return to_string(posx) + " " + to_string(posy);
 }

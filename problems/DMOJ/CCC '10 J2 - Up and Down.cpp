@@ -2,6 +2,7 @@
 using namespace std;
 
 //CCC '10 J2 - Up and Down
+//https://dmoj.ca/problem/ccc10j2
 //1-11-2025
 
 int main() {

@@ -1,11 +1,11 @@
-
-//Appleby Contest '20 P2 - Playful Playdoughs
-//https://dmoj.ca/problem/ac20p2
-
 #include <iostream>
 #include <vector>
 #include <unordered_map>
 using namespace std;
+
+//Appleby Contest '20 P2 - Playful Playdoughs
+//https://dmoj.ca/problem/ac20p2
+//1-9-2025
 
 int main() {
 	int n, q;

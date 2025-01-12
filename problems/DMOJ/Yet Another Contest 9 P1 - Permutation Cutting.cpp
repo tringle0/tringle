@@ -5,6 +5,7 @@ using namespace std;
 
 //Yet Another Contest 9 P1 - Permutation Cutting
 //https://dmoj.ca/problem/yac9p1
+//1-11-2025
 
 void printvec(vector<int> vec) {
 	for (int k = 0; k < vec.size(); k++) {
