@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <unordered_set>
+#include <unordered_map>
 using namespace std;
 
 //CCC '24 J4 - Troublesome Keys
@@ -10,45 +11,57 @@ using namespace std;
 
 int main() {
 	string str1, str2; cin >> str1 >> str2;
+	int lengthdif = str1.length() - str2.length();
 	char sillyto = '-';
-	unordered_set<char> chars1;
+	unordered_set<char> chars;
+	unordered_map<char, int> charcount;
 	for (int k = 0; k < str1.length(); k++) {
-		chars1.insert(str1.at(k));
+		chars.insert(str1.at(k));
+		charcount[str1.at(k)]++;
 	}
-	unordered_set<char> chars2 = chars1;
-	for (int k = 0; k < str2.length(); k++) {
-		if (chars1.count(str2.at(k)) > 0) {
-			chars2.erase(str2.at(k)); //remove similar
-		}
-		else {
-			//if str2 has a character str1 doesnt have then that character is the sillykey
-			sillyto = str2.at(k);
-		}
-	}
-
-	//remaining characters are possible silly characters
-	//one of them is quiet and one of them is silly
-	vector<char> replacetest;
-	replacetest.insert(replacetest.end(), chars2.begin(), chars2.end());
-
-	if (replacetest.size() == 1) {
-		cout << replacetest.at(0) << " " << sillyto << endl << "-";
-	}
-	else {
-		for (int k = 0; k < str1.length(); k++) {
-			if (str1.at(k) == replacetest.at(0)) {
-				str1.at(k) = sillyto;
+	vector<char> uniques;
+	uniques.insert(uniques.end(), chars.begin(), chars.end());
+	//remove chars and check if same length
+	for (int k = 0; k < uniques.size(); k++) {
+		if (charcount[uniques.at(k)] == lengthdif) {
+			cout << uniques.at(k) << endl;
+			string teststr = str1;
+			//remove quiet key
+			for (int i = 0; i < teststr.size(); i++) {
+				if (teststr.at(i) == uniques.at(k)) {
+					teststr.erase(i, 1);
+				}
+				
 			}
-			if (str1.at(k) == replacetest.at(1)) {
-				str1.erase(k);
-				k--;
+			cout << "str: " << teststr << endl;
+			//find silly key
+			char sillyfrom = '-', sillyto = '-';
+			for (int k = 0; k < teststr.size(); k++) {
+				if (teststr.at(k) != str2.at(k)) {
+					if (sillyfrom == '-') {
+						sillyfrom = teststr.at(k);
+						sillyto = str2.at(k);
+						break;
+					}
+				}
 			}
-		}
-		if (str1 == str2) {
-			cout << replacetest.at(0) << " " << sillyto << endl << replacetest.at(1);
-		}
-		else {
-			cout << replacetest.at(1) << " " << sillyto << endl << replacetest.at(0);
+			cout << sillyfrom << " " << sillyto << endl;
+
+			if (sillyfrom != '-') {
+				//apply silly key
+				for (int k = 0; k < teststr.size(); k++) {
+					if (teststr.at(k) == sillyfrom) {
+						teststr.at(k) = sillyto;
+					}
+				}
+				//check strings
+				if (teststr == str2) {
+					cout << "found\n";
+					cout << sillyfrom << " " << sillyto << endl;
+					cout << uniques.at(k);
+					break;
+				}
+			}
 		}
 	}
 }
