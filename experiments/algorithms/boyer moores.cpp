@@ -4,7 +4,7 @@
 using namespace std;
 
 // boyer moores string searching algorithm
-// 1/9/2025
+// 1-9-2025
 
 int searchstr(string &word, string &target, int pos) {
 	//not found
