@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DMOJ\CCC %2721 J4 - Arranging Books.cpp" />
+    <ClCompile Include="DMOJ\CCC %2708 J4 - From Prefix to Postfix.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
