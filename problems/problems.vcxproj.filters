@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DMOJ\CCC %2724 J4 - Troublesome Keys.cpp">
+    <ClCompile Include="other\word search.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
