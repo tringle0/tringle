@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DMOJ\CCC %2710 J5 - Knight Hop.cpp" />
+    <ClCompile Include="DMOJ\CCC %2723 J5 - CCC Word Hunt.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
