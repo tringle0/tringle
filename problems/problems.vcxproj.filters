@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DMOJ\CCC %2705 S2 - Mouse Move.cpp">
+    <ClCompile Include="DMOJ\CCC %2710 J5 - Knight Hop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
