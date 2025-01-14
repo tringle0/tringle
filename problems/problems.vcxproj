@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DMOJ\CCC %2714 S1 - Party Invitation.cpp" />
+    <ClCompile Include="DMOJ\CCC %2705 S2 - Mouse Move.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
