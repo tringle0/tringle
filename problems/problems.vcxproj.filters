@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="other\word search.cpp">
+    <ClCompile Include="DMOJ\CCC %2723 S1 - Trianglane.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
