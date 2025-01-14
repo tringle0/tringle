@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DMOJ\CCC %2723 S1 - Trianglane.cpp">
+    <ClCompile Include="DMOJ\CCC %2714 S1 - Party Invitation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
