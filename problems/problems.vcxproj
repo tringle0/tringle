@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DMOJ\CCC %2717 S2 - High Tide, Low Tide.cpp" />
+    <ClCompile Include="DMOJ\CCC %2720 J4 - Cyclic Shifts.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
