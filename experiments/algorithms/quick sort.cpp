@@ -12,7 +12,7 @@ void printvec(vector<int>& list) {
 }
 
 vector<int> swap(vector<int>& list, int a, int b) {
-	int temp = 0;
+	int temp;
 	temp = list.at(a);
 	list.at(a) = list.at(b);
 	list.at(b) = temp;
