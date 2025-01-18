@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DMOJ\CCC %2713 J4 - Time on task.cpp" />
+    <ClCompile Include="DMOJ\Mock CCC %2722 Contest 1 J4 - Snowball Fight.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
