@@ -1,18 +1,17 @@
 #include <iostream>
 #include <vector>
 #include <queue>
-#include <algorithm>
 using namespace std;
 
 //CCC '08 S3 - Maze
 //https://dmoj.ca/problem/ccc08s3
-//1-22-2025 wip
+//1-22-2025 
 
-class maze {
+class Maze {
 public:
 	int r, c; //size of grid
 	vector<vector<char>> grid;
-	maze(vector<vector<char>> grid) {
+	Maze(vector<vector<char>> grid) {
 		this->grid = grid;
 		r = grid.size();
 		c = grid[0].size();
@@ -91,7 +90,7 @@ int main() {
 			cout << -1 << endl;
 		}
 		else {
-			maze a(vec);
+			Maze a(vec);
 			cout << a.traverse() << endl;
 		}
 		
