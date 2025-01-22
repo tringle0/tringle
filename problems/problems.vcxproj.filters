@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ACSL\2018-2019 Contest 2 Intermediate - Diff.cpp">
+    <ClCompile Include="CCC\CCC %2708 S3 - Maze.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
