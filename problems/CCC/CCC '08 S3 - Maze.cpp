@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
-#include <deque>
+#include <queue>
+#include <algorithm>
 using namespace std;
 
 //CCC '08 S3 - Maze
@@ -13,86 +14,86 @@ public:
 	vector<vector<char>> grid;
 	maze(vector<vector<char>> grid) {
 		this->grid = grid;
-		r = grid[0].size();
-		c = grid.size();
+		r = grid.size();
+		c = grid[0].size();
 	}
 
-
+	struct tile {
+		//row, collumn, distance
+		int r, c, d;
+	};
 	
 	int traverse() {
 		//BFS variables
-		deque<pair<int, int>> next;
-		deque < pair<int, int>> step;
-		pair<int, int> current;
-		int counter = 0;
-
+		queue < tile> step;
+		tile current;
 		//initial pos
-		step.push_back({ 0,0 });
+		step.push({ 0,0,1 });
 		
 
 		//use BFS to find shortest path
 		while (true) {
+
+			//not found
+			if (step.empty()) return -1;
+
+			current = { step.front().r,step.front().c,step.front().d};
+			step.pop();
 			
-			
-			//END CASES
-			if (step.empty()) {
-				if (next.empty()) {
-					//end case
-					break;
-				} {
-					//next step
-					counter++;
-					step = next;
-					next.clear();
-				}
-			}
 			//check if end reached
-			if (current.first == r - 1 && current.second == c - 1) {
+			if (current.r == r - 1 && current.c == c - 1) {
 				break;
 			}
 
-			current = { step.front().first,step.front().second };
-			step.pop_front();
-			
-			
 			//check valid position
-			if (current.first < r && current.first >= 0 && current.second < c && current.second >= 0) {
-				
-				switch (grid[current.first][current.second]) {
+			if (current.r < r && current.r >= 0 && current.c < c && current.c >= 0) {
+				switch (grid[current.r][current.c]) {
+
 				case '+':
 					//all 4 directions
-					step.push_back({ current.first + 1,current.second });
-					step.push_back({ current.first,current.second + 1 });
-					step.push_back({ current.first - 1,current.second });
-					step.push_back({ current.first ,current.second - 1 });
+					step.push({ current.r + 1,current.c,current.d+1 });
+					step.push({ current.r,current.c + 1,current.d + 1 });
+					step.push({ current.r - 1,current.c ,current.d + 1 });
+					step.push({ current.r ,current.c - 1,current.d + 1 });
 					break;
 				case '-':
 					//only lr
-					step.push_back({ current.first ,current.second + 1 });
-					step.push_back({ current.first ,current.second - 1 });
+					step.push({ current.r ,current.c + 1,current.d + 1 });
+					step.push({ current.r ,current.c - 1,current.d + 1 });
+					break;
 				case '|':
 					//only ud
-					step.push_back({ current.first + 1,current.second });
-					step.push_back({ current.first - 1,current.second });
+					step.push({ current.r + 1,current.c,current.d + 1 });
+					step.push({ current.r - 1,current.c,current.d + 1 });
+					break;
 				}
 				//mark current tile
-				grid[current.first][current.second] = '*';
+				grid[current.r][current.c] = '*';
 			}
 		}
-		return counter;
+		return current.d;
 	}
 
 };
 
 int main() {
-	int r, c; vector<vector<char>> vec;
-	cin >> r >> c;
-	for (int k = 0; k < r; k++) {
-		vec.push_back({});
-		for (int i = 0; i < c; i++) {
-			char in; cin >> in; vec[k].push_back(in);
+	int n; cin >> n;
+	int r, c;;
+	for (int k = 0; k < n; k++) {
+		cin >> r >> c;
+		vector<vector<char>> vec(r, vector<char>(c, 0));
+		for (int k = 0; k < r; k++) {
+			for (int i = 0; i < c; i++) {
+				cin >> vec[k][i];
+			}
 		}
+		if (vec[r - 1][c - 1] == '*') {
+			cout << -1 << endl;
+		}
+		else {
+			maze a(vec);
+			cout << a.traverse() << endl;
+		}
+		
 	}
-	maze a(vec);
-	cout << a.traverse();
 }
