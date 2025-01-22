@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DMOJ\Mock CCC %2722 Contest 1 J4 - Snowball Fight.cpp">
+    <ClCompile Include="ACSL\2018-2019 Contest 2 Intermediate - Diff.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
