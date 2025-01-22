@@ -8,6 +8,7 @@ using namespace std;
 
 //2018-2019 Contest #2 Intermediate - Diff
 //https://www.datafiles.acsl.org/samples/contest2/c2-int-prog.pdf
+//1-21-2025
 
 string commonAll(vector<string> strs){
 	unordered_set<char> common;
