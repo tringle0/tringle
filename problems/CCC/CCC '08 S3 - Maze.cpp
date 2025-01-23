@@ -9,73 +9,81 @@ using namespace std;
 
 class Maze {
 public:
-	int r, c; //size of grid
+	//VARIABLES
+	//dimensions of grid
+	int r, c;
+	//vector for storing grid values
 	vector<vector<char>> grid;
+	//properties for a single tile (row, column, distance from start)
+	struct tile { int r, c, d; };
+
+
+	//constructor
 	Maze(vector<vector<char>> grid) {
 		this->grid = grid;
 		r = grid.size();
 		c = grid[0].size();
 	}
-
-	struct tile {
-		//row, collumn, distance
-		int r, c, d;
-	};
+	
 	
 	int traverse() {
-		//BFS variables
-		queue < tile> step;
-		tile current;
-		//initial pos
-		step.push({ 0,0,1 });
-		
+		//queue used for BFS
+		queue <tile> bfs;
+		//current position to check
+		tile current = {0,0,1};	
+
+		//set initial position
+		bfs.push(current);
 
 		//use BFS to find shortest path
 		while (true) {
 
-			//not found
-			if (step.empty()) return -1;
-
-			current = { step.front().r,step.front().c,step.front().d};
-			step.pop();
-			
+			//return -1 when no path is found
+			if (bfs.empty()) return -1;
 			//check if end reached
 			if (current.r == r - 1 && current.c == c - 1) {
 				break;
 			}
 
-			//check valid position
+			//set the current tile to be checked
+			current = { bfs.front().r,bfs.front().c,bfs.front().d};
+			bfs.pop();
+			
+			//check if the tile is in range of the grid
 			if (current.r < r && current.r >= 0 && current.c < c && current.c >= 0) {
+				//add neighbors of the current tile based on its type
 				switch (grid[current.r][current.c]) {
-
 				case '+':
 					//all 4 directions
-					step.push({ current.r + 1,current.c,current.d+1 });
-					step.push({ current.r,current.c + 1,current.d + 1 });
-					step.push({ current.r - 1,current.c ,current.d + 1 });
-					step.push({ current.r ,current.c - 1,current.d + 1 });
+					bfs.push({ current.r + 1,current.c,current.d+1 });
+					bfs.push({ current.r,current.c + 1,current.d + 1 });
+					bfs.push({ current.r - 1,current.c ,current.d + 1 });
+					bfs.push({ current.r ,current.c - 1,current.d + 1 });
 					break;
 				case '-':
-					//only lr
-					step.push({ current.r ,current.c + 1,current.d + 1 });
-					step.push({ current.r ,current.c - 1,current.d + 1 });
+					//only left-right
+					bfs.push({ current.r ,current.c + 1,current.d + 1 });
+					bfs.push({ current.r ,current.c - 1,current.d + 1 });
 					break;
 				case '|':
-					//only ud
-					step.push({ current.r + 1,current.c,current.d + 1 });
-					step.push({ current.r - 1,current.c,current.d + 1 });
+					//only up-down
+					bfs.push({ current.r + 1,current.c,current.d + 1 });
+					bfs.push({ current.r - 1,current.c,current.d + 1 });
 					break;
 				}
-				//mark current tile
+
+				//mark current tile as traversed
 				grid[current.r][current.c] = '*';
 			}
 		}
+
 		return current.d;
 	}
 
 };
 
 int main() {
+	//get input
 	int n; cin >> n;
 	int r, c;;
 	for (int k = 0; k < n; k++) {
@@ -93,6 +101,5 @@ int main() {
 			Maze a(vec);
 			cout << a.traverse() << endl;
 		}
-		
 	}
 }
