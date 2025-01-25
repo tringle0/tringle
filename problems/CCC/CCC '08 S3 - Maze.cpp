@@ -89,12 +89,14 @@ public:
 
 		//comparator for pqueue
 		struct comparedist {
-			bool operator()(tile const& a, tile const& b) const { return b.h > a.h; }
+			bool operator()(tile const& a, tile const& b) const { 
+				return a.h + a.d > b.h + b.d;
+ }
 		};
 		//priority queue for A*
 		priority_queue <tile, vector<tile>, comparedist> pq;
 		//current position to check
-		tile current = { 0,0,1, 1 };
+		tile current = { 0,0,1, r+c };
 
 		pq.push(current);
 		while (true) {
@@ -105,7 +107,7 @@ public:
 			current = { pq.top().r,pq.top().c,pq.top().d, pq.top().h };
 
 			//check if final position reached
-			if (current.r == r - 1 && current.c == c - 1) break;
+			if (current.r == r - 1 && current.c == c - 1) return current.d;
 
 			pq.pop();
 			
@@ -113,25 +115,25 @@ public:
 			if (current.r < r && current.r >= 0 && current.c < c && current.c >= 0) {
 				//skip if grid is already marked
 				if (grid[current.r][current.c] != '*') {
-					cout << current.r << ", " << current.c << " : " << current.h << endl;
+
 					//add neighbors of the current tile based on its type
 					switch (grid[current.r][current.c]) {
 					case '+':
 						//all 4 directions
-						pq.push({ current.r + 1,current.c,current.d + 1, r - (current.r + 1) + c - current.c + (current.d + 1) });
-						pq.push({ current.r,current.c + 1,current.d + 1, r - current.r + c - (current.c + 1) + (current.d + 1) });
-						pq.push({ current.r - 1,current.c ,current.d + 1, r - (current.r - 1) + c - current.c + (current.d + 1) });
-						pq.push({ current.r ,current.c - 1,current.d + 1, r - current.r + c - (current.c - 1) + (current.d + 1) });
+						pq.push({ current.r + 1,current.c,current.d + 1, abs(r - (current.r + 1)) + abs(c - current.c) });
+						pq.push({ current.r,current.c + 1,current.d + 1, abs(r - current.r) + abs(c - (current.c + 1)) });
+						pq.push({ current.r - 1,current.c ,current.d + 1, abs(r - (current.r - 1)) + abs(c - current.c) });
+						pq.push({ current.r ,current.c - 1,current.d + 1, abs(r - current.r) + abs(c - (current.c - 1)) });
 						break;
 					case '-':
 						// only left-right
-						pq.push({ current.r ,current.c + 1,current.d + 1, r - current.r + c - (current.c + 1) + (current.d + 1) });
-						pq.push({ current.r ,current.c - 1,current.d + 1, r - current.r + c - (current.c - 1) + (current.d + 1) });
+						pq.push({ current.r ,current.c + 1,current.d + 1, abs(r - current.r) + abs(c - (current.c + 1)) });
+						pq.push({ current.r ,current.c - 1,current.d + 1, abs(r - current.r) + abs(c - (current.c - 1)) });
 						break;
 					case '|':
 						// only up-down
-						pq.push({ current.r + 1,current.c,current.d + 1, r - (current.r + 1) + c - current.c + (current.d + 1) });
-						pq.push({ current.r - 1,current.c,current.d + 1, r - (current.r - 1) + c - current.c + (current.d + 1) });
+						pq.push({ current.r + 1,current.c,current.d + 1, abs(r - (current.r + 1)) + abs(c - current.c) });
+						pq.push({ current.r - 1,current.c,current.d + 1, abs(r - (current.r - 1)) + abs(c - current.c) });
 						break;
 					}
 				}
@@ -162,7 +164,7 @@ int main() {
 		}
 		else {
 			Maze a(vec);
-			cout << a.Astar() << endl;
+			cout << a.bfsTraverse() << endl;
 		}
 	}
 }
