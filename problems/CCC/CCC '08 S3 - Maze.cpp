@@ -88,13 +88,13 @@ public:
 		struct tile { int r, c, d, h; };
 
 		//comparator for pqueue
-		struct comparedist {
+		struct heuristic {
 			bool operator()(tile const& a, tile const& b) const { 
 				return a.h + a.d > b.h + b.d;
  }
 		};
 		//priority queue for A*
-		priority_queue <tile, vector<tile>, comparedist> pq;
+		priority_queue <tile, vector<tile>, heuristic > pq;
 		//current position to check
 		tile current = { 0,0,1, r+c };
 

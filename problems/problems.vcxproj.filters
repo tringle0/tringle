@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CCC\CCC %2708 S3 - Maze.cpp">
+    <ClCompile Include="misc\Techblazers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
