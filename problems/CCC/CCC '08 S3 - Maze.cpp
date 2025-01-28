@@ -41,7 +41,7 @@ public:
 
 			//return -1 when no path is found
 			if (bfs.empty()) return -1;
-			
+
 			//set the current tile to be checked
 			current = { bfs.front().r,bfs.front().c,bfs.front().d };
 			bfs.pop();
@@ -89,20 +89,20 @@ public:
 
 		//comparator for pqueue
 		struct heuristic {
-			bool operator()(tile const& a, tile const& b) const { 
+			bool operator()(tile const& a, tile const& b) const {
 				return a.h + a.d > b.h + b.d;
- }
+			}
 		};
 		//priority queue for A*
 		priority_queue <tile, vector<tile>, heuristic > pq;
 		//current position to check
-		tile current = { 0,0,1, r+c };
+		tile current = { 0,0,1, r + c };
 
 		pq.push(current);
 		while (true) {
 			//check if queue is empty
 			if (pq.empty()) return -1;
-			
+
 			//set current tile to be checked
 			current = { pq.top().r,pq.top().c,pq.top().d, pq.top().h };
 
@@ -110,7 +110,7 @@ public:
 			if (current.r == r - 1 && current.c == c - 1) return current.d;
 
 			pq.pop();
-			
+
 			//check if the tile is in range of the grid
 			if (current.r < r && current.r >= 0 && current.c < c && current.c >= 0) {
 				//skip if grid is already marked
@@ -137,7 +137,7 @@ public:
 						break;
 					}
 				}
-				
+
 				//mark current tile as traversed
 				grid[current.r][current.c] = '*';
 			}
