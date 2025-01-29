@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="misc\Techblazers practice problem.cpp">
+    <ClCompile Include="CCC\Mock CCC %2714 J5 - Spacetime Surfer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
