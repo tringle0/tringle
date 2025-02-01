@@ -2,7 +2,6 @@
 
 place where i keep all of my code
 
-solutions in C++ (mostly) and Java
 
 https://dmoj.ca/user/tringle
 
