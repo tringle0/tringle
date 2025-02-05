@@ -9,14 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="CCC\CCC %2706 J3 - Cell-Phone Messaging.cs" />
-    <Compile Remove="CCC\DMOPC %2713 Contest 3 P3 - Crossing Field.cs" />
-    <Compile Remove="CCC\Mock CCC %2718 Contest 1 J1 - A String Problem.cs" />
-    <Compile Remove="misc\DMOPC %2713 Contest 3 P3 - Crossing Field.cs" />
+    <Compile Remove="problems\CCC\CCC %2706 J3 - Cell-Phone Messaging.cs" />
+    <Compile Remove="problems\CCC\DMOPC %2713 Contest 3 P3 - Crossing Field.cs" />
+    <Compile Remove="problems\CCC\Mock CCC %2718 Contest 1 J1 - A String Problem.cs" />
+    <Compile Remove="problems\misc\DMOPC %2713 Contest 3 P3 - Crossing Field.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="misc\" />
+    <Folder Include="problems\misc\" />
   </ItemGroup>
 
 </Project>
