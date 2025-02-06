@@ -23,7 +23,6 @@ namespace CCC
 
         public static void Main(string[] args)
         {
-            //sieve
             string[] input = Console.ReadLine().Split(' ');
             int minL = int.Parse(input[0]);
             int startN = int.Parse(input[1]);
@@ -31,6 +30,17 @@ namespace CCC
             int minSize = (int)Math.Pow(10, minL);
             int current = (int)Math.Max(startN, minSize*minSize/10 + 1);
 
+            if (minL == 0)
+            {
+                while (!IsPrime(startN))
+                {
+                    startN++;
+                }
+                Console.WriteLine(startN);
+                return;
+            }
+            
+            
             for (int k = minSize; k <= current/minSize*10; k *= 10)
             {
                 int left = current / k;
