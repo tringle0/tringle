@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CCC\CCC %2705 J5 - Bananas.cpp">
+    <ClCompile Include="CCC\CCC %2711 J5 - Unfriend.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
