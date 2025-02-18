@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CCC\CCC %2707 J5 - Keep on Truckin%27.cpp" />
+    <ClCompile Include="CCC\CCC %2712 S5 - Mouse Journey.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
