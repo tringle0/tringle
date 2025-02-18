@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CCC\CCC %2712 S5 - Mouse Journey.cpp">
+    <ClCompile Include="CCC\CCC %2720 S2 - Escape Room.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
