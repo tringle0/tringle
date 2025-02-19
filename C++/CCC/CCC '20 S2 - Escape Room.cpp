@@ -1,6 +1,8 @@
 #include<iostream>
 #include <vector>
 #include <queue>
+#include <unordered_map>
+#include <unordered_set>
 using namespace std;
 
 //CCC '20 S2 - Escape Room
@@ -9,32 +11,32 @@ using namespace std;
 
 int main() {
 	int r, c; cin >> r >> c;
-	vector<vector<int>> grid(r, vector<int>(c));
-	for (int k = 0; k < r; k++) {
-		for (int i = 0; i < c; i++) {
-			cin >> grid[k][i];
-		}
-	}
-	struct tile {
+	struct pos {
 		int r, c;
 	};
-	queue<tile> bfs;
-	bfs.push({0, 0});
-	
-	while (true) {
-		if (bfs.empty()) { cout << "no"; break; };
-		tile current = bfs.front();
-		bfs.pop();
-		if (current.r >= r || current.c >= c) continue;
-		if (current.r == r - 1 && current.c == c - 1) { cout << "yes"; break; }
-		if(grid[current.r][current.c] == -1) continue;
-		int val = grid[current.r][current.c];
-		grid[current.r][current.c] = -1;
-		for (int k = 1; k*k <= val; k++) {
-			if (val % k == 0) {
-					bfs.push({ k-1, val / k-1});
-					bfs.push({val / k - 1, k-1});
-			}
+	unordered_map<int, vector<pos>> graph;
+	vector<vector<bool>> marked(r, vector<bool>(c, false));
+	for (int k = 0; k < r; k++) {
+		for (int i = 0; i < c; i++) {
+			int in; cin >> in;
+			graph[in].push_back({ k + 1,i + 1 });
 		}
 	}
+	queue<pos> bfs;
+	bfs.push({ r, c });
+	while (true) {
+		if (bfs.empty()) { cout << "no"; break; }
+		pos current = bfs.front();
+		bfs.pop();
+		if (marked[current.r - 1][current.c - 1]) continue;
+		marked[current.r - 1][current.c - 1] = true;
+
+		if (current.c == 1 && current.r == 1) { cout << "yes"; break; }
+		for (auto k : graph[current.r * current.c]) {
+			bfs.push(k);
+		}
+
+	}
+
+
 }
