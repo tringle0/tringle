@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CCC\CCC %2711 S1 - English or French.cpp">
+    <ClCompile Include="CCC\CCC %2797 S1 - Sentences.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

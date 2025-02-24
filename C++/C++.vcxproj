@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CCC\CCC %2711 S1 - English or French.cpp" />
+    <ClCompile Include="CCC\CCC %2797 S1 - Sentences.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
