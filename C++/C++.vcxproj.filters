@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CCC\CCC %2798 S1 - Censor.cpp">
+    <ClCompile Include="CCC\CCC %2710 S1 - Computer Purchase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
