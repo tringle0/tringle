@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CCC\CCC %2705 S1 - Snow Calls.cpp">
+    <ClCompile Include="CCC\CCC %2711 S1 - English or French.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
