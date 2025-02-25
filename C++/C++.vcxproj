@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CCC\CCC %2700 S1 - Slot Machines.cpp" />
+    <ClCompile Include="CCC\CCC %2720 S1 - Surmising a Sprinter%27s Speed.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
