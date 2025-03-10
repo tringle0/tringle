@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="competitive programming\CCC\CCC %2700 S2 - Babbling Brooks.cpp">
+    <ClCompile Include="CCC %2724 S2 - Heavy-Light Composition.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
