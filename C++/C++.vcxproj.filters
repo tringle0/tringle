@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CCC %2724 S2 - Heavy-Light Composition.cpp">
+    <ClCompile Include="competitive programming\CCC\CCC %2706 J4 - It%27s tough being a teen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

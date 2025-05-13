@@ -131,7 +131,7 @@
     <LinkedItem Include="@(None)" Condition="'%Link' != ''" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CCC %2724 S2 - Heavy-Light Composition.cpp" />
+    <ClCompile Include="competitive programming\CCC\CCC %2706 J4 - It%27s tough being a teen.cpp" />
   </ItemGroup>
   <Target Name="CopyLinkedFiles" BeforeTargets="Build" Inputs="@(LinkedItem)" Outputs="@(LinkedItem->'%(Filename)%(Extension)')">
     <Copy SourceFiles="@(LinkedItem)" DestinationFolder="$(MSBuildProjectDirectory)" />
