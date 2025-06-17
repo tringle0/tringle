@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="competitive programming\CCC\CCC %2706 J4 - It%27s tough being a teen.cpp">
+    <ClCompile Include="competitive programming\CCC\CCC %2707 S2 - Boxes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
