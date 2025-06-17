@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="competitive programming\CCC\CCC %2707 S2 - Boxes.cpp">
+    <ClCompile Include="competitive programming\CCC\CCC %2710 S2 - Huffman Encoding.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
