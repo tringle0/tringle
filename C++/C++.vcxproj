@@ -131,7 +131,7 @@
     <LinkedItem Include="@(None)" Condition="'%Link' != ''" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="competitive programming\CCC\CCC %2710 S2 - Huffman Encoding.cpp" />
+    <ClCompile Include="competitive programming\CCC\CCC %2718 S2 - Sunflowers.cpp" />
   </ItemGroup>
   <Target Name="CopyLinkedFiles" BeforeTargets="Build" Inputs="@(LinkedItem)" Outputs="@(LinkedItem->'%(Filename)%(Extension)')">
     <Copy SourceFiles="@(LinkedItem)" DestinationFolder="$(MSBuildProjectDirectory)" />
