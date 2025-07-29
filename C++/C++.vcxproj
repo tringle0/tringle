@@ -131,7 +131,7 @@
     <LinkedItem Include="@(None)" Condition="'%Link' != ''" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="competitive programming\CCC\CCC %2701 S2 - Spirals.cpp" />
+    <ClCompile Include="competitive programming\CCC\CCC %2708 S2 - Pennies in the Ring.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="output.txt" />

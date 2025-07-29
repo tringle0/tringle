@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="competitive programming\CCC\CCC %2701 S2 - Spirals.cpp">
+    <ClCompile Include="competitive programming\CCC\CCC %2708 S2 - Pennies in the Ring.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
