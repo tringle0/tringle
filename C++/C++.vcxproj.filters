@@ -18,7 +18,7 @@
     <Text Include="output.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="competitive programming\CCC\CCC %2722 S2 - Good Groups.cpp">
+    <ClCompile Include="competitive programming\CCC\CCC %2796 S3 - Pattern Generator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
