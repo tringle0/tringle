@@ -134,7 +134,7 @@
     <Text Include="output.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="competitive programming\CCC\CCC %2701 S3 - Strategic Bombing.cpp" />
+    <ClCompile Include="competitive programming\CCC\CCC %2723 S3 - Palindromic Poster.cpp" />
   </ItemGroup>
   <Target Name="CopyLinkedFiles" BeforeTargets="Build" Inputs="@(LinkedItem)" Outputs="@(LinkedItem->'%(Filename)%(Extension)')">
     <Copy SourceFiles="@(LinkedItem)" DestinationFolder="$(MSBuildProjectDirectory)" />

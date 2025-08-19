@@ -4,174 +4,106 @@ using namespace std;
 
 //CCC '23 S3 - Palindromic Poster
 //https://dmoj.ca/problem/ccc23s3
-//2-6-2025
+//8-18-2025
 
-#define allow 'o'
-#define block 'x'
-#define blockall 'b'
+//literally just a letter that makes the final solution look cooler
+#define sillyLetter 'h'
+
+//makes a palindrome of 0s and 1s
+//returns an empty string if impossible
+string makePalindrome(int length, int n) {
+	//invalid length
+	if (n > length) return "";
+
+	string result = string(length, '0');
+	if (n % 2 == 1) {
+		if (length % 2 == 1) {
+			//fill center
+			result.at(length / 2) = '1';
+		}
+		else {
+			return "";
+		}
+	}
+
+	//fill ones from both sides
+	for (int k = 0; k < n / 2; k++) {
+		result.at(k) = '1';
+		result.at(result.length() - 1 - k) = '1';
+	}
+
+	return result;
+}
+
+//makes a non palindome or 0s and 1s
+//returns an empty string if impossible
+string makeNonPalindrome(int length, int n) {
+	//invalid length
+	if (length <= 1) return "";
+
+	string result = string(length, '0');
+	//fill in ones from left only
+	for (int k = 0; k < n; k++) {
+		result.at(k) = '1';
+	}
+	return result;
+}
+
+//construct grid from axes
+//1 denotes #-------, 0 denotes #-------#
+vector<vector<int>> constructGrid(string rowAxis, string colAxis, int rows, int cols) {
+	vector<vector<int>> grid = vector<vector<int>>(rows, vector<int>(cols));
+	for (int r = 0; r < rows; r++) {
+		grid[r][0] += rowAxis.at(r) - '0';
+		if (rowAxis.at(r) == 0) grid[r][cols - 1] = grid[r][0];
+	}
+	for (int c = 0; c < cols; c++) {
+		grid[0][c] += colAxis.at(c) - '0';
+		if (colAxis.at(c) == 0) grid[rows - 1][c] = grid[0][c];
+	}
+	return grid;
+}
 
 int main() {
-	int m, n, r, c;
-	cin >> n >> m >> r >> c;
+	int rows, cols; cin >> rows >> cols;
+	int pRows, pCols; cin >> pRows >> pCols;
 
-	if (r == n && c == m) {
-		for (int k = 0; k < n; k++) {
-			for (int i = 0; i < m; i++) {
-				cout << 'h';
+	string rowAxis, colAxis;
+	bool valid = true;
+
+	
+	if (pRows == rows) {
+		//all rows used, column axis needs to be palindrome
+		colAxis = makePalindrome(cols, cols - pCols);
+	}
+	else {
+		colAxis = makeNonPalindrome(cols, cols - pCols);
+	}
+	if (colAxis.empty()) valid = false;
+
+
+	if (pCols == cols) {
+		//all cols used, row axis needs to palindrome
+		rowAxis = makePalindrome(rows, rows - pRows);
+	}
+	else {
+		rowAxis = makeNonPalindrome(rows, rows - pRows);
+	}
+	if (rowAxis.empty()) valid = false;
+
+	if (valid) {
+		vector<vector<int>> grid = constructGrid(rowAxis, colAxis, rows, cols);
+
+		for (auto r : grid) {
+			for (int c : r) {
+				cout << (char)(sillyLetter + c);
 			}
-			cout << '\n';
+			cout << endl;
 		}
-		return 0;
 	}
-	if (r > n || c > m) {
+	else {
 		cout << "IMPOSSIBLE";
-		return 0;
-	}
-
-	if (r == n && m % 2 == 0 && c % 2 == 1) {
-		cout << "IMPOSSIBLE";
-		return 0;
-	}
-	if (c == m && n % 2 == 0 && r % 2 == 1) {
-		cout << "IMPOSSIBLE";
-		return 0;
 	}
 	
-	for (int k = 0; k < n; k++) {
-		for (int i = 0; i < m; i++) {
-			if (k == 0 && i == 0) {
-				if (c == 0 && r == 0) {
-					cout << blockall;
-				}
-				else {
-					cout << block;
-				}
-				
-				continue;
-			}
-			if (k != 0 && i != 0) {
-				cout << allow;
-				continue;
-			}
-			//top row
-			if (k == 0) {
-				//forced palindome top row (when all r = n)
-				if (r == n) {
-					//odd # of collumns: odd palindrome
-					if (m % 2 == 1) {
-						//even amount of required cols: fill center
-						if (c % 2 == 0) {
-							//fill center tile
-							if (i == m / 2) {
-								cout << block;
-							}
-							else {
-								//fill rest of the tiles from left and right
-								int fromcenter = c / 2;
-								if (i < m / 2 - fromcenter || i > m / 2 + fromcenter) {
-									cout << block;
-								}
-								else {
-									cout << allow;
-								}
-							}
-						}
-						else {
-							//odd amount required cols: dont fill center
-							int fromcenter = c / 2;
-							if (i < m / 2 - fromcenter || i > m / 2 + fromcenter) {
-								cout << block;
-							}
-							else {
-								cout << allow;
-							}
-						}
-					}
-					else {
-						//even amount of columns rows: even palindrome
-						if (c % 2 == 0) {
-							//fill from left and right
-							int fromcenter = (m - c) / 2;
-							if (i < m / 2 - fromcenter || i >= m / 2 + fromcenter) {
-								cout << block;
-							}
-							else {
-								cout << allow;
-							}
-						}
-					}
-				}
-				else {
-					//not forced: top row doesn't have to be palindrome
-					if (i < m - c) {
-						cout << block;
-					}
-					else {
-						cout << allow;
-					}
-				}
-			}
-			//leftmost column
-			if (i == 0) {
-				//forced palindome left column (when all c = m)
-				if (c == m) {
-					//odd # of rows: odd palindrome
-					if (n % 2 == 1) {
-						//even amount of required rows: fill center
-						if (r % 2 == 0) {
-							//fill center tile
-							if (k == n / 2) {
-								cout << block;
-							}
-							else {
-								//fill rest of the tiles from top and bottom
-								int fromcenter = r / 2;
-								if (k < n / 2 - fromcenter || k > n / 2 + fromcenter) {
-									cout << block;
-								}
-								else {
-									cout << allow;
-								}
-							}
-						}
-						else {
-							//odd amount required rows: dont fill center
-							int fromcenter = r / 2;
-							if (k < n / 2 - fromcenter || k > n / 2 + fromcenter) {
-								cout << block;
-							}
-							else {
-								cout << allow;
-							}
-						}
-					}
-					else {
-						//even amount of rows: even palindrome
-						if (r % 2 == 0) {
-							//fill from top and bottom
-							int fromcenter = (n - r) / 2;
-							if (k < n / 2 - fromcenter || k >= n / 2 + fromcenter) {
-								cout << block;
-							}
-							else {
-								cout << allow;
-							}
-						}
-					}
-				}
-				else {
-					//not forced: leftmost col doesn't have to be palindrome
-					if (k < n - r) {
-						cout << block;
-					}
-					else {
-						cout << allow;
-					}
-				}
-			}
-		}
-		cout << '\n';
-	}
-
 
 }
