@@ -18,7 +18,7 @@
     <Text Include="output.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="competitive programming\CCC\CCC %2715 S3 - Gates.cpp">
+    <ClCompile Include="competitive programming\CCC\CCC %2701 S5 - Post%27s Correspondence Problem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
