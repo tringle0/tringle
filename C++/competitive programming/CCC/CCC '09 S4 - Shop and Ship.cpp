@@ -10,22 +10,27 @@ using namespace std;
 //11-20-2025
 
 int main() {
+	//makes input faster 
+	std::ios_base::sync_with_stdio(false);
+	std::cin.tie(nullptr); 
+
 	int n, t;
 	cin >> n >> t;
 	vector<vector<int>> routes(n, vector<int>(n, -1)); //-1 marks no link, cost
+	
 	struct pathTo {
 		int city;
 		int cost;
 	};
-
+	vector<vector<pathTo>> paths(n); //adjacency list of paths(city,cost)
 	vector<int> costs; //city is index 
 
 	for (int k = 0; k < t; k++) {
 		int x, y, c;
 		cin >> x >> y >> c;
-		x--; y--;
-		routes.at(x).at(y) = c;
-		routes.at(y).at(x) = c;
+		x--; y--; //fix indexing
+		paths.at(x).push_back({y,c});
+		paths.at(y).push_back({x,c});
 	}
 
 	int K;
@@ -54,6 +59,8 @@ int main() {
 		}
 	};
 
+
+	//comparator for priority queue
 	struct nodeComparator {
 		bool operator()(const node& a, const node& b) {
 			return a.totalCost > b.totalCost;
@@ -69,14 +76,15 @@ int main() {
 	while (!BFS.empty()) {
 		//pick front
 		node current = BFS.top();
-		current.print();
+		//current.print();
 		BFS.pop();
 
-		//remove cases
+		//update best path to reach a certain city
 		if (current.totalCost < minCosts.at(current.city)) {
 			minCosts.at(current.city) = current.totalCost;
 		}
 		else {
+			//skip city if a better path to it already exists
 			continue;
 		}
 
@@ -86,18 +94,17 @@ int main() {
 			minCost = min(minCost, buyCost);
 		}
 		
-
 		//case travel
-		for (int k = 0; k < n; k++) {
-			int pathCost = routes.at(k).at(current.city);
-			if (pathCost != -1) {
-				int nextCityTravelCost = current.totalCost + pathCost;
-				BFS.push({ k, nextCityTravelCost });
-			}
+		for (pathTo path : paths.at(current.city)) {
+			int pathCost = path.cost;
+			int nextCityTravelCost = current.totalCost + pathCost;
+
+			//only add next node if the path to it is more worth than the best cost currently
+			if(nextCityTravelCost <= minCost)
+				BFS.push({ path.city, nextCityTravelCost });
 		}
 	}
 
 	cout << minCost;
 	
-
 }
