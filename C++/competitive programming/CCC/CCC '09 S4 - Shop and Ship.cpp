@@ -16,14 +16,13 @@ int main() {
 
 	int n, t;
 	cin >> n >> t;
-	vector<vector<int>> routes(n, vector<int>(n, -1)); //-1 marks no link, cost
 	
 	struct pathTo {
 		int city;
 		int cost;
 	};
 	vector<vector<pathTo>> paths(n); //adjacency list of paths(city,cost)
-	vector<int> costs; //city is index 
+	vector<int> costs(n, -1); //city is index 
 
 	for (int k = 0; k < t; k++) {
 		int x, y, c;
@@ -35,8 +34,6 @@ int main() {
 
 	int K;
 	cin >> K;
-
-	costs = vector<int>(n, -1);
 
 	for (int k = 0; k < K; k++) {
 		int z, c;
@@ -68,7 +65,7 @@ int main() {
 	};
 
 	priority_queue<node, vector<node>, nodeComparator> BFS;
-	vector<int> minCosts(n, INT_MAX);
+	vector<int> minCosts(n, INT_MAX);  //lowest cost path to city at index
 	//add first
 	BFS.push({ targetCity, 0});
 	int minCost = INT_MAX; 
