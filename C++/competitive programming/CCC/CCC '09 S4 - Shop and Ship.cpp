@@ -20,11 +20,13 @@ struct pathTo {
 
 /*
 findBestPath function
-	this is the main algorithm in the code, runs BFS on the given graph
+	@brief this is the main algorithm in the code, runs BFS on the given graph
 	@return the lowest-costing path from the destination to a selling-point, including the cost of selling
-	@param[in] vector of buying costs in each city, adjacency list of paths, number of cities, destination city
+	@param[in] costs		vector containing the cost of buying at city at index
+	@param[in] paths		adjacency matrix of paths representing the graph
+	@param[in] targetCity	the destination city
 */
-int findBestPath(vector<int> &costs, vector<vector<pathTo>> &paths, int &n, int &targetCity) {
+int findBestPath(vector<int> &costs, vector<vector<pathTo>> &paths, int &targetCity) {
 	//each element of the bfs
 	//holds the current city being checked and the cost of the route taken
 	struct node {
@@ -47,7 +49,7 @@ int findBestPath(vector<int> &costs, vector<vector<pathTo>> &paths, int &n, int 
 	priority_queue<node, vector<node>, nodeComparator> BFS;
 
 	//dp for lowest cost route to reach city at index
-	vector<int> minCosts(n, INT_MAX);
+	vector<int> minCosts(costs.size(), INT_MAX);
 
 	//current cost of best selling point
 	int minCost = INT_MAX;
@@ -140,5 +142,5 @@ int main() {
 	targetCity--; //fix indexing
 
 	//run the function
-	cout << findBestPath(costs, paths, n, targetCity);
+	cout << findBestPath(costs, paths, targetCity);
 }
