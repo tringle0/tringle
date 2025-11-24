@@ -2,51 +2,55 @@
 #include <queue>
 #include <vector>
 #include <unordered_set>
+#include <math.h>
 using namespace std;
 
 //CCC '10 J5 - Knight Hop
 //https://dmoj.ca/problem/ccc10j5
-//1-14-2025
+//11-24-2025
 
-//using bfs
+//using math
 int main() {
 	int x, y, tx, ty; cin >> x >> y >> tx >> ty;
-	queue<pair<int, int>> traverse;
-	queue<pair<int, int>> nextlevel;
-	vector<pair<int, int>> directions = {
-		{1,2},{-1,2},{1,-2},{-1,-2},{2,1},{2,-1},{-2,1},{-2,-1}
-	};
-	unordered_set<int> marked;
+	
+	//relative distance required to cover
+	int moveX = abs(tx - x);
+	int moveY = abs(ty - y);
 
-	traverse.push({ x,y });
-	int counter = 0;
-	while (!traverse.empty() || !nextlevel.empty()) {
-		int cx = traverse.front().first;
-		int cy = traverse.front().second;
-		if (cx == tx && cy == ty) break;
+	//take larger distance to travel as primary distance
+	int pr = max(moveX, moveY);
+	int se = min(moveX, moveY);
 
-		if (marked.count((cx * 10) + cy) == 0) {
-			//add neighboors
-			for (int k = 0; k < 8; k++) {
-				int nx = cx + directions.at(k).first;
-				int ny = cy + directions.at(k).second;
-				//boundaries
-				if (nx >= 1 && nx <= 8 && ny >= 1 && ny <= 8) {
-					nextlevel.push({ nx,ny });
-				}
-			}
+	//number of 2-tile hops and 1-tile hops required to cover primary distance
+	int prOnes = pr % 2;
+	int prTwos = pr / 2;
+
+	//repeat until the compliment of the primary distance travelled is enough to cover the secondary
+	while (prOnes * 2 + prTwos < se) {
+		//TWO MAIN TRANSFORMATIONS
+		//A
+		if (prTwos > 0) {
+			//2 -> 1 1
+			prTwos--;
+			prOnes += 2;
 		}
-		marked.insert((cx * 10) + cy);
-		traverse.pop();
-
-		if (traverse.empty()) {
-			while (!nextlevel.empty()) {
-				traverse.push(nextlevel.front());
-				nextlevel.pop();
-			}
-			counter++;
+		//B
+		else {
+			//1 -> 1 2
+			prTwos++;
 		}
-
 	}
-	cout << counter;
+
+	//get total steps
+	int steps = prTwos + prOnes;
+
+	//edge-cases
+	if (pr == 1 && se == 0) cout << 3;
+	else if (pr == 1 && se == 1) cout << 4;
+	else if (pr == 2 && se == 2) cout << 4;
+	else {
+		//add a step if even/odd don't match up
+		cout << steps + (prTwos % 2 == se % 2 ? 0 : 1);
+	}
+		
 }

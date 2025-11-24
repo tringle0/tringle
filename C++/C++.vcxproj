@@ -134,7 +134,7 @@
     <Text Include="output.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="competitive programming\CCC\CCC %2709 S4 - Shop and Ship.cpp" />
+    <ClCompile Include="competitive programming\CCC\CCC %2710 J5 - Knight Hop.cpp" />
   </ItemGroup>
   <Target Name="CopyLinkedFiles" BeforeTargets="Build" Inputs="@(LinkedItem)" Outputs="@(LinkedItem->'%(Filename)%(Extension)')">
     <Copy SourceFiles="@(LinkedItem)" DestinationFolder="$(MSBuildProjectDirectory)" />
