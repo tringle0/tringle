@@ -17,9 +17,4 @@
   <ItemGroup>
     <Text Include="output.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="competitive programming\CCC\CCC %2710 J5 - Knight Hop.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
 </Project>

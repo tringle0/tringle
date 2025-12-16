@@ -53,4 +53,4 @@ int main() {
 		cout << steps + (prTwos % 2 == se % 2 ? 0 : 1);
 	}
 		
-}
+} 
