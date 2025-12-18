@@ -1,47 +1,57 @@
 #include <iostream>
-#include <unordered_map>
+#include <vector>
+#include <climits>
 
 //CCC '12 S3 - Absolutely Acidic
 //https://dmoj.ca/problem/ccc12s3
-//12-12-2025
+//12-18-2025
 using namespace std;
 
+//single pass solution
 int main() {
     int n; cin >> n;
-    unordered_map<int, int> counts;
-    int mostFreq = INT_MIN, secFreq = INT_MIN;
-
+    vector<int> counts(1001, 0);
+    
     for (int k = 0; k < n; k++) {
         int in; cin >> in;
         counts[in]++;
     }
 
-    for (auto k : counts) {
-        mostFreq = max(mostFreq, k.second);
-    }
+    //frequencies
+    int mostFreq = 0, secFreq = 0;
 
-    for (auto k : counts) {
-        if (k.second < mostFreq) secFreq = max(secFreq, k.second);
-    }
+    //pair of min and max value
+    pair<int, int> mostFreqV = {INT_MAX, 0};
+    pair<int, int> secFreqV = {INT_MAX, 0};
+    for (int k = 0; k < 1001; k++) {
+        int freq = counts.at(k); 
+        int value = k;
+        if (freq < secFreq) continue;
+        //greater than most frequent, shift down to sec most frequent
+        if (freq > mostFreq) {
+            secFreq = mostFreq;
+            mostFreq = freq;
 
-    pair<int, int> mostFreqN = { INT_MAX, INT_MIN };
-    pair<int, int> secFreqN = { INT_MAX, INT_MIN };
-
-    for (auto k : counts) {
-        if (k.second == mostFreq) {
-            mostFreqN.first = min(mostFreqN.first, k.first);
-            mostFreqN.second = max(mostFreqN.second, k.first);
+            secFreqV = mostFreqV;
+            mostFreqV = { value, value };
         }
-        if (k.second == secFreq) {
-            secFreqN.first = min(secFreqN.first, k.first);
-            secFreqN.second = max(secFreqN.second, k.first);
-
+        //equal to most frequent, see if larger/smaller than limits
+        else if (freq == mostFreq) {
+            mostFreqV = { min(value, mostFreqV.first), max(value, mostFreqV.second) };
+        }
+        //greater-equal to second most frequent, replace and find new limits
+        else if (freq >= secFreq) {
+            secFreq = freq;
+            secFreqV = { min(value, secFreqV.first), max(value, secFreqV.second) };
         }
     }
 
-    if (mostFreqN.first != mostFreqN.second) cout << abs(mostFreqN.first - mostFreqN.second);
+    //most freq max = min, only one most freq number
+    if (mostFreqV.first == mostFreqV.second) {
+        cout << max(abs(mostFreqV.first - secFreqV.first), abs(mostFreqV.first - secFreqV.second));
+    }
+    //multiple most freq numbers, find difference between min and max
     else {
-        cout << max(abs(mostFreqN.first - secFreqN.first), abs(mostFreqN.first - secFreqN.second));
+        cout << abs(mostFreqV.first - mostFreqV.second);
     }
-
 }

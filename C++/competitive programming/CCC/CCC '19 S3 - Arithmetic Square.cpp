@@ -14,7 +14,7 @@ using namespace std;
 #define X 2000000
 
 class ArithmeticSquare {
-public: 
+public:
 	vector<int> grid;
 
 	enum fillResult {
@@ -48,7 +48,7 @@ public:
 
 	fillResult canFillSquare(int r, int c) {
 		//determine which axis to use
-		pair<bool, bool> canFill = {true,true}; //whether the row,col has enough information
+		pair<bool, bool> canFill = { true,true }; //whether the row,col has enough information
 		for (int k = 0; k < 3; k++) {
 			if (k != r && grid.at(3 * k + c) == X) canFill.first = false;
 			if (k != c && grid.at(3 * r + k) == X) canFill.second = false;
@@ -62,19 +62,19 @@ public:
 		int filledNum;		//result number to be filled
 		vector<int> nums;	//representing the 3 numbers of the row/col
 		if (vertical)	nums = { grid.at(c), grid.at(c + 3),grid.at(c + 6) };
-		else			nums = { grid.at(r*3), grid.at(r*3 + 1), grid.at(r*3 + 2) };
+		else			nums = { grid.at(r * 3), grid.at(r * 3 + 1), grid.at(r * 3 + 2) };
 
 		//check invalid case
 		if (pos == 1 && (nums.at(0) + nums.at(2)) % 2 == 1) return invalid;
 
 		//find the missing number
 		switch (pos) {
-			case 0: filledNum = 2 * nums.at(1) - nums.at(2);	break;
-			case 1: filledNum = (nums.at(0) + nums.at(2))/2;	break;
-			case 2: filledNum = 2 * nums.at(1) - nums.at(0);	break;
+		case 0: filledNum = 2 * nums.at(1) - nums.at(2);	break;
+		case 1: filledNum = (nums.at(0) + nums.at(2)) / 2;	break;
+		case 2: filledNum = 2 * nums.at(1) - nums.at(0);	break;
 		}
-		fill(3*r + c, filledNum, false);
-		
+		fill(3 * r + c, filledNum, false);
+
 		//re check if correct
 		if (vertical)	nums = { grid.at(c), grid.at(c + 3),grid.at(c + 6) };
 		else			nums = { grid.at(r * 3), grid.at(r * 3 + 1), grid.at(r * 3 + 2) };
@@ -104,7 +104,7 @@ public:
 	}
 
 	void fillGrid() {
-		
+
 		while (true) {
 			fillResult passResult = fillPass();
 
@@ -120,7 +120,7 @@ public:
 			if (passResult == invalid) {
 				backTrack();
 			}
-			
+
 		}
 	}
 
