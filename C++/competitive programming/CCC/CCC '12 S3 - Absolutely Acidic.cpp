@@ -4,7 +4,9 @@
 
 //CCC '12 S3 - Absolutely Acidic
 //https://dmoj.ca/problem/ccc12s3
+//tringle
 //12-18-2025
+//One pass solution to find most frequent and second most frequent readings
 using namespace std;
 
 //single pass solution
@@ -12,6 +14,7 @@ int main() {
     int n; cin >> n;
     vector<int> counts(1001, 0);
     
+    //input
     for (int k = 0; k < n; k++) {
         int in; cin >> in;
         counts[in]++;
