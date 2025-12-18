@@ -133,6 +133,9 @@
   <ItemGroup>
     <Text Include="output.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="competitive programming\CCC\CCC %2719 S3 - Arithmetic Square.cpp" />
+  </ItemGroup>
   <Target Name="CopyLinkedFiles" BeforeTargets="Build" Inputs="@(LinkedItem)" Outputs="@(LinkedItem->'%(Filename)%(Extension)')">
     <Copy SourceFiles="@(LinkedItem)" DestinationFolder="$(MSBuildProjectDirectory)" />
   </Target>
